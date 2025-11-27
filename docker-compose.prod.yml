@@ -10,18 +10,6 @@ services:
     environment:
       - STORAGE_PATH=/app/data/policies
       - CORS_ORIGIN=http://localhost:3000
-      - OPA_URL=http://opa:8181
-    depends_on:
-      - opa
-
-  opa:
-    image: openpolicyagent/opa:1.10.1
-    ports:
-      - "8181:8181"
-    command:
-      - "run"
-      - "--server"
-      - "--addr=0.0.0.0:8181"
 
   frontend:
     image: ${DOCKER_USER:-hzmonama}/regolab-frontend:latest
